@@ -178,14 +178,17 @@ class BlackjackGame(object):
         elif not self.__dealerTurn:
             self.enable_buttons()
 
-    def stand(self) -> None:
+    def stand(self, msg: str='User stands...') -> None:
         """
-        User stands, and the dealer is dealt cards until their hand value is greater than 17.        
+        User stands, and the dealer is dealt cards until their hand value is greater than 17.  
+
+        :param msg: Message to display, defaults to 'User stands...'
+        :type msg: str      
         """
         self.disable_buttons()
 
         self.__outcomeLabel.config(
-            text="User stands...", fg=TEXT_COLOR_DEFAULT)
+            text=msg, fg=TEXT_COLOR_DEFAULT)
 
         self.__dealerTurn = True
 
@@ -221,13 +224,10 @@ class BlackjackGame(object):
         """
         self.disable_buttons()
 
-        self.__outcomeLabel.config(
-            text="User doubles down...", fg=TEXT_COLOR_DEFAULT)
-
         self.hit(self.__player)
 
         if not self.__gameOver:
-            self.stand()
+            self.stand("User doubles down...")
 
     def busted(self, name: str) -> None:
         """
