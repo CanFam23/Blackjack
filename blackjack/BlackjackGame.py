@@ -6,8 +6,8 @@ Blackjack game on a TKinter window.
 '''
 import tkinter as tk
 
-from BlackjackPlayer import BlackjackPlayer as BP
-from DeckOfCards import DeckOfCards as DC
+from blackjack.BlackjackPlayer import BlackjackPlayer as BP
+from blackjack.DeckOfCards import DeckOfCards as DC
 
 DELAY_SEC = 1500
 

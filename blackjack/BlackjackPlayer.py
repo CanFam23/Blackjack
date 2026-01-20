@@ -6,7 +6,7 @@ which stores the players name, hand, and total value and includes methods
 for adding cards, updating hand value, checking for a bust, and getting the hand / value
 '''
 
-from Card import Card
+from blackjack.Card import Card
 
 class BlackjackPlayer(object):
     def __init__(self, name = 'player'):

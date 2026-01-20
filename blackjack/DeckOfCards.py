@@ -24,7 +24,7 @@ from typing import Union
 
 from PIL import Image, ImageTk
 
-from Card import Card
+from blackjack.Card import Card
 
 
 class DeckOfCards(object):
