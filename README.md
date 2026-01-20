@@ -2,10 +2,10 @@
 
 A Python-based Blackjack game using TKinter. 
 
-I wanted to refresh my Python GUI skills and what better way to do so than recreating one of my first Python projects? Surely it will be a lot easier to recreate 3 years later right? right?
+I wanted to refresh my Python GUI skills and what better way to do so than recreating one of my first Python projects?
 
 ## House Rules (Features)
-Since it was so easy and I wrote this code so fast, my Blackjack has special rules:
+Since it was so easy to recreate, my Blackjack has special rules:
 1. Aces are always low (1, no exceptions)
 2. No splitting
 3. Dealer stands on 17 or higher
