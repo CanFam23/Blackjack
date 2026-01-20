@@ -108,7 +108,7 @@ class DeckOfCards(object):
         
         '''
         try:
-            DeckOfCards.cardImages = Image.open(f"../img/{filename}")
+            DeckOfCards.cardImages = Image.open(f"sprite/{filename}")
             DeckOfCards.width, DeckOfCards.height = DeckOfCards.cardImages.size
             
             # We'll assume that the image sheet has one column for each face and one row for each suit,
