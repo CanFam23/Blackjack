@@ -19,6 +19,7 @@ Modified by: Ted Wendt
 Modified on: February 20, 2022
 '''
 
+from typing import Union
 from PIL import Image, ImageTk
 from Card import Card
 import random
@@ -92,7 +93,7 @@ class DeckOfCards(object):
     #===================================
     
     @classmethod
-    def loadCardImages(cls, filename):
+    def loadCardImages(cls, filename: str) -> None:
         '''
             Loads the card deck image sheet from the specified file.
             Sets the width and height of cards based on the image dimensions
@@ -122,7 +123,7 @@ class DeckOfCards(object):
             print("An error occurred loading your image")
             
     @classmethod
-    def __loadImage(cls, row, col):
+    def __loadImage(cls, row: int, col: int) -> ImageTk.PhotoImage:
         '''
             local helper function for creating individual card images.
             crops the class image to return the card in the specified row and column.
@@ -153,7 +154,7 @@ class DeckOfCards(object):
         t = ImageTk.PhotoImage(img)     # Convert the Image to an ImageTk object so we can render it to a tkinter canvas
         return t    
             
-    def __init__(self, deckImages = None, acesHigh = False):
+    def __init__(self, deckImages: str = None, acesHigh: bool = False) -> None: # type: ignore
         '''
         Constructor
         Parameters:
@@ -168,7 +169,7 @@ class DeckOfCards(object):
         # If there's no image, don't do anything.
         if deckImages is not None:
             DeckOfCards.loadCardImages(deckImages)
-            DeckOfCards.backOfCard = Card(None, None, 0, DeckOfCards.__loadImage(4, 2))
+            DeckOfCards.backOfCard = Card(None, None, 0, DeckOfCards.__loadImage(4, 2)) # type: ignore
         else:
             DeckOfCards.backOfCard = None
         
@@ -192,10 +193,10 @@ class DeckOfCards(object):
                     img = DeckOfCards.__loadImage(j, i)
                 else:
                     img = None
-                self.__cards.append(Card(face, suit, value, img))
+                self.__cards.append(Card(face, suit, value, img)) # type: ignore
             i += 1
     
-    def shuffle(self):
+    def shuffle(self) -> None:
         '''
             randomly shuffle the cards in the deck.  Reset the currentCard counter to 0.
             
@@ -206,7 +207,7 @@ class DeckOfCards(object):
         self.reset()
         random.shuffle(self.__cards)
         
-    def dealCard(self):
+    def dealCard(self) -> Union[Card, None]:
         '''
             return the card at index 'currentCard' to the user and increment 'currentCard'
             
@@ -224,7 +225,7 @@ class DeckOfCards(object):
             c = None
         return c
         
-    def cardsRemaining(self):
+    def cardsRemaining(self) -> int:
         '''
             return the number of cards remaining that are available to be dealt.
             
@@ -234,7 +235,7 @@ class DeckOfCards(object):
         '''
         return len(self.__cards) - self.currentCard
     
-    def isEmpty(self):
+    def isEmpty(self) -> bool:
         '''
             return True if there are no cards remaining to be dealt.
             
@@ -244,7 +245,7 @@ class DeckOfCards(object):
         '''
         return self.cardsRemaining() == 0
     
-    def hasNext(self):
+    def hasNext(self) -> bool:
         '''
             return True if there is at least one card remaining to be dealt.
             

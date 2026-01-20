@@ -12,6 +12,11 @@ Modified by: Ted Wendt
 Modified on: February 20, 2022
 '''
 
+from typing import Union
+from PIL import ImageTk
+import tkinter as tk
+
+
 class Card():
     '''
     A class used to represent a simple playing card.
@@ -48,7 +53,7 @@ class Card():
                 renders the card image to the specified canvas at coords (top, left).
     '''
 
-    def __init__(self, face = None, suit = None, value = None, image = None):
+    def __init__(self, face: str = None, suit: str = None, value: int = None, image: ImageTk.PhotoImage = None) -> None: # type: ignore
         '''
         Constructor
         Parameters:
@@ -70,7 +75,7 @@ class Card():
     #============================================
     # Accessor Methods
     #============================================
-    def getSuit(self):
+    def getSuit(self) -> str:
         '''
             standard accessor method for __suit variable
             preconditions: None
@@ -78,7 +83,7 @@ class Card():
         '''
         return self.__suit
     
-    def getFace(self):
+    def getFace(self) -> str:
         '''
             standard accessor method for __face variable
             preconditions: None
@@ -86,7 +91,7 @@ class Card():
         '''        
         return self.__face
     
-    def getValue(self):
+    def getValue(self) -> int:
         '''
             standard accessor method for __value variable
             preconditions: None
@@ -106,7 +111,7 @@ class Card():
     #============================================
     # Other Methods
     #============================================ 
-    def draw(self, cvs, left, top):
+    def draw(self, cvs: tk.Canvas, left: int, top: int) -> None:
         '''
             Draws the card image to the specified canvas.  Places the top left
             corner of the image at the coordinates (left, top).
@@ -118,7 +123,7 @@ class Card():
         '''
         cvs.create_image(left, top, image = self.__image, anchor = "nw")
     
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.__face} of {self.__suit}"
     
     
@@ -128,22 +133,22 @@ class Card():
     # based on the face value of the cards.
     #============================================
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         return self.getValue() == other.getValue()
     
-    def __lt__(self, other):
+    def __lt__(self, other) -> bool:
         return self.getValue() < other.getValue()
     
-    def __gt__(self, other):
+    def __gt__(self, other) -> bool:
         return self.getValue() > other.getValue()
     
-    def __le__(self, other):
+    def __le__(self, other) -> bool:
         return self < other or self == other
     
-    def __ge__(self, other):
+    def __ge__(self, other) -> bool:
         return self > other or self == other
     
-    def __ne__(self, other):
+    def __ne__(self, other) -> bool:
         return not (self == other)
     
 # End of class Card
